@@ -1,0 +1,32 @@
+.location-search div input {
+  border: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.suggestion-item,
+.suggestion-item-active {
+  border-left: 2px solid #e6e6e6;
+  border-right: 2px solid #e6e6e6;
+  border-bottom: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.loading {
+  border-left: 2px solid #e6e6e6;
+  border-right: 2px solid #e6e6e6;
+  border-bottom: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 100%;
+  background: white;
+}

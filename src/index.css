@@ -1,0 +1,145 @@
+body,
+html,
+#root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Open Sans";
+}
+
+.app-logo {
+  background-image: url("./images/AppLogo.svg");
+  height: 45px;
+  width: 122px;
+  position: absolute;
+  top: 24px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.input-label {
+  color: #39527b;
+  letter-spacing: 1px;
+  padding-bottom: 0.8rem;
+}
+
+.input {
+  border: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.date-picker {
+  border: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.react-datepicker {
+  font-family: "Open Sans" !important;
+}
+
+.dropdown {
+  overflow-y: scroll;
+  height: 103px;
+}
+
+.green-button {
+  background-color: #60c84c;
+  border: none;
+  padding: 0.8rem 3rem;
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+  border: 2px solid #60c84c;
+  width: 250px;
+}
+
+.blue-button {
+  background-color: #30436b;
+  border: none;
+  padding: 0.8rem 3rem;
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+  border: 2px solid #30436b;
+  width: 250px;
+}
+
+.error {
+  color: salmon;
+  font-size: 14px;
+}
+
+th {
+  text-transform: uppercase;
+  background-color: #52c03b !important;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-weight: 14px;
+  padding: 1rem 1.5rem !important;
+}
+
+tbody {
+  border-top: none !important;
+}
+
+td {
+  /* color: #39527b !important; */
+  padding: 1rem 1.5rem !important;
+  vertical-align: middle;
+}
+
+/* td:nth-child(7) {
+  color: #49ce49 !important;
+  padding: 1rem 1.5rem !important;
+  vertical-align: middle;
+} */
+
+
+
+tr {
+  border: 1px solid #dee2e6 !important;
+}
+
+.pagination {
+  color: #39527b;
+  font-size: 14px;
+}
+
+.box {
+  height: 14px;
+  width: 14px;
+}
+
+.input-select {
+  border: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  background: #f7f7f7;
+}
+
+.option {
+  border-bottom: 2px solid #e6e6e6;
+  border-left: 2px solid #e6e6e6;
+  border-right: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .col-md-12 {
+    padding-bottom: 16px;
+  }
+}

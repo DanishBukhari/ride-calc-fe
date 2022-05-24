@@ -1,0 +1,73 @@
+.background {
+  background-image: url("../../images/LoginBackground.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.title {
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.sub-title {
+  color: white;
+  font-size: 18px;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.login-form {
+  padding: 0 80px;
+}
+
+.login-title {
+  color: white;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.login-fields {
+  padding: 65px 0;
+}
+
+.login-input-label {
+  color: #707070;
+  padding-bottom: 12px;
+}
+
+.login-input {
+  border: none;
+  background-color: transparent;
+  height: 24px;
+  border-bottom: 1px solid #707070;
+  color: white;
+  padding-bottom: 0.4rem;
+  height: 100%;
+}
+
+input:focus {
+  outline: none;
+}
+
+@media (max-width: 990px) {
+  .login-form {
+    padding: 0 40px;
+  }
+  .login-fields {
+    padding: 40px 0;
+  }
+  .title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .sub-title {
+    font-size: 16px;
+  }
+}

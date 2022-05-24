@@ -1,0 +1,57 @@
+.pick-up-time {
+  border: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+}
+
+.payment-type {
+  border: 2px solid #e6e6e6;
+  padding: 0.8rem 1rem;
+  color: #344c74;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.total-price {
+  border: 2px solid #e6e6e6;
+  color: #52c03b;
+  background: #fbfbfb;
+  padding: 16px 24px;
+}
+
+.kilometers {
+  border-top: 2px solid #e6e6e6;
+  border-left: 2px solid #e6e6e6;
+  border-right: 2px solid #e6e6e6;
+  color: #39527b;
+  background: #fbfbfb;
+  padding: 16px 24px;
+}
+
+.total-price-title {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.order {
+  padding-top: 76px;
+}
+
+@media (max-width: 990px) {
+  .green-button,
+  .blue-button {
+    width: 200px;
+    margin-top: 16px;
+  }
+  .order {
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 773px) {
+  .green-button,
+  .blue-button {
+    width: auto;
+  }
+}
