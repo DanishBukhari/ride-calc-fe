@@ -29,7 +29,7 @@ const EditAccount = () => {
   React.useState(() => {
     axios
       .get(
-        `/tariffs/account/${state.account.account_name}`
+        `https://aridee.herokuapp.com/tariffs/account/${state.account.account_name}`
       )
       .then((res) => {
         if (res.status === 200) {
@@ -50,7 +50,7 @@ const EditAccount = () => {
   const saveAccount = () => {
     axios
       .put(
-        `/accounts/${state.account.account_id}`,
+        `https://aridee.herokuapp.com/accounts/${state.account.account_id}`,
         {
           account,
           accountAddress,
@@ -78,7 +78,7 @@ const EditAccount = () => {
     //alert(driverName)
       axios
         .post(
-          `/tariffs/remove`,
+          `https://aridee.herokuapp.com/tariffs/remove`,
           {
             tarrif_id: id,
           },

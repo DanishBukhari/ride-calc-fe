@@ -3,6 +3,7 @@ import Page from "../Page/Page";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./AddAccount.css";
+import { baseURL } from '../../config';
 
 const AddAccount = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const AddAccount = () => {
   const createAccount = () => {
     axios
       .post(
-        "/accounts",
+        "https://aridee.herokuapp.com/accounts",
         {
           account,
           accountAddress,

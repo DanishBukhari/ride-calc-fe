@@ -92,7 +92,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const getTariffs = (hasTariff = false) => {
     axios
       .get(
-        `/tariffs/v2/account/${sessionStorage.getItem(
+        `https://aridee.herokuapp.com/tariffs/v2/account/${sessionStorage.getItem(
           "username"
         )}`,
         {
@@ -127,7 +127,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const getAllTariffs = (hasTariff = false) => {
     axios
       .get(
-        `/tariffs/account/${sessionStorage.getItem(
+        `https://aridee.herokuapp.com/tariffs/account/${sessionStorage.getItem(
           "username"
         )}`,
         {
@@ -151,7 +151,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
     if (orderId) {
       getTariffs(true);
       axios
-        .get(`/orders/${orderId}`, {
+        .get(`https://aridee.herokuapp.com/orders/${orderId}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -213,7 +213,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   React.useEffect(() => {
     axios
-      .get(`/driver/listing`, {
+      .get(`https://aridee.herokuapp.com/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -241,7 +241,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   const getDriversList = () => {
     axios
-      .get(`/driver/listing`, {
+      .get(`https://aridee.herokuapp.com/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -338,7 +338,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
     axios
     .post(
-      "/orders/update",
+      "https://aridee.herokuapp.com/orders/update",
       {
         orderStatus: 'rejected',
         orderId,
@@ -441,7 +441,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const order = () => {
     axios
       .post(
-        "/orders/update",
+        "https://aridee.herokuapp.com/orders/update",
         {
           orderStatus: 'accepted',
           orderId,

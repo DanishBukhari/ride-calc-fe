@@ -5,7 +5,6 @@ import { AiFillCaretLeft } from "react-icons/ai";
 import { AiFillCaretRight } from "react-icons/ai";
 import _ from "lodash";
 import { useNavigate } from "react-router-dom";
-
 const Accounts = () => {
   const [accounts, setAccounts] = React.useState([]);
   const [displayAccounts, setDisplayAccounts] = React.useState([]);
@@ -14,8 +13,8 @@ const Accounts = () => {
 
   const getAccounts = () => {
     axios
-      .get("/accounts", {
-        headers: {
+      .get("https://aridee.herokuapp.com/accounts", {
+      headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
         },
@@ -42,7 +41,7 @@ const Accounts = () => {
 
   const deleteAccount = (accountId) => {
     axios
-      .delete(`/accounts/${accountId}`, {
+      .delete(`https://aridee.herokuapp.com/accounts/${accountId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
