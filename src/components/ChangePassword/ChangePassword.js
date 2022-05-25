@@ -13,7 +13,7 @@ const ChangePassword = () => {
   const change = () => {
     axios
       .post(
-        "/users/changePassword",
+        "https://aridee.herokuapp.com/users/changePassword",
         {
           username: sessionStorage.getItem("username"),
           newPassword,
