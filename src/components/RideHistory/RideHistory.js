@@ -31,7 +31,7 @@ const RideHistory = () => {
 
   React.useEffect(() => {
     axios
-      .get(`https://aridee.herokuapp.com/orders/user/${username}`, {
+      .get(`/orders/user/${username}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -49,7 +49,7 @@ const RideHistory = () => {
 
   // React.useEffect(() => {
   //   axios
-  //     .get(`https://aridee.herokuapp.com/orders/v2/user`, {
+  //     .get(`/orders/v2/user`, {
   //       headers: {
   //         "Content-Type": "application/json",
   //         Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -79,7 +79,7 @@ const RideHistory = () => {
 
   const getAccounts = () => {
     axios
-      .get("https://aridee.herokuapp.com/accounts", {
+      .get("/accounts", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -102,7 +102,7 @@ const RideHistory = () => {
   // const getOrders = (accountId, startDate, endDate) => {
   //   axios
   //     .post(
-  //       "https://aridee.herokuapp.com/orders/history",
+  //       "/orders/history",
   //       {
   //         accountId,
   //         startDate: startDate.getDate()  + "." + (startDate.getMonth() + 1) + "." + startDate.getFullYear(),
@@ -134,7 +134,7 @@ const RideHistory = () => {
   const getOrders_v2 = (accountId, startDate, endDate) => {
     axios
       .post(
-        "https://aridee.herokuapp.com/orders/v2/history",
+        "/orders/v2/history",
         {
           startDate: startDate.getDate()  + "." + (startDate.getMonth() + 1) + "." + startDate.getFullYear(),
           endDate: endDate.getDate()  + "." + (endDate.getMonth() + 1) + "." + endDate.getFullYear(),
@@ -163,7 +163,7 @@ const RideHistory = () => {
   const getOrders = (accountId, startDate, endDate) => {
     axios
       .post(
-        "https://aridee.herokuapp.com/orders/v3/history",
+        "/orders/v3/history",
         {
           username: sessionStorage.getItem("username"),
           startDate: startDate.getDate()  + "." + (startDate.getMonth() + 1) + "." + startDate.getFullYear(),

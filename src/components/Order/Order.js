@@ -96,10 +96,10 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const getTariffs = (hasTariff = false) => {
     axios
       .get(
-        `https://aridee.herokuapp.com/tariffs/account/${sessionStorage.getItem(
+        `/tariffs/account/${sessionStorage.getItem(
           "username"
         )}`,
-        //`https://aridee.herokuapp.com/tariffs/account/${username}`,
+        //`/tariffs/account/${username}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -140,7 +140,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
     if (orderId) {
       getTariffs(true);
       axios
-        .get(`https://aridee.herokuapp.com/orders/${orderId}`, {
+        .get(`/orders/${orderId}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -198,7 +198,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   React.useEffect(() => {
     axios
-      .get(`https://aridee.herokuapp.com/driver/listing`, {
+      .get(`/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -231,7 +231,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
     { 
         
       axios
-      .get(`https://aridee.herokuapp.com/tariffs`, {
+      .get(`/tariffs`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -262,7 +262,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   // React.useEffect(() => {
   //   axios
-  //     .get(`https://aridee.herokuapp.com/tariffs`, {
+  //     .get(`/tariffs`, {
   //       headers: {
   //         "Content-Type": "application/json",
   //         Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -290,7 +290,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   const getDriversList = () => {
     axios
-      .get(`https://aridee.herokuapp.com/driver/listing`, {
+      .get(`/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -408,7 +408,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const order = () => {
     axios
       .post(
-        "https://aridee.herokuapp.com/orders",
+        "/orders",
         {
           orderStatus: 'pending',
           orderId,

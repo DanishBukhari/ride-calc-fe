@@ -45,7 +45,7 @@ const OrderHistory = () => {
       //alert(driverName)
         axios
           .post(
-            `https://aridee.herokuapp.com/tariffs/add/${username}`,
+            `/tariffs/add/${username}`,
             {
                 tariff_title: tarrifTittle,
                 tariff_type: tarrifType,
@@ -72,7 +72,7 @@ const OrderHistory = () => {
   const getOrders = (accountId, startDate, endDate) => {
     axios
       .post(
-        "https://aridee.herokuapp.com/orders/history",
+        "/orders/history",
         {
           accountId,
           startDate: startDate.getDate()  + "." + (startDate.getMonth() + 1) + "." + startDate.getFullYear(),
@@ -95,7 +95,7 @@ const OrderHistory = () => {
 
   const getAccounts = () => {
     axios
-      .get("https://aridee.herokuapp.com/accounts", {
+      .get("/accounts", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,

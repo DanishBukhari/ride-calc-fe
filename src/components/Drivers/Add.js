@@ -58,7 +58,7 @@ const OrderHistory = () => {
       //alert(driverName)
         axios
           .post(
-            "https://aridee.herokuapp.com/driver/add",
+            "/driver/add",
             {
               name: driverName,
               email: driverEmail
@@ -84,7 +84,7 @@ const OrderHistory = () => {
   const getOrders = (accountId, startDate, endDate) => {
     axios
       .post(
-        "https://aridee.herokuapp.com/orders/history",
+        "/orders/history",
         {
           accountId,
           startDate: startDate.getDate()  + "." + (startDate.getMonth() + 1) + "." + startDate.getFullYear(),
@@ -107,7 +107,7 @@ const OrderHistory = () => {
 
   const getAccounts = () => {
     axios
-      .get("https://aridee.herokuapp.com/accounts", {
+      .get("/accounts", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,

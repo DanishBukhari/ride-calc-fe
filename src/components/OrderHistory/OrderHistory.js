@@ -19,7 +19,7 @@ const RideHistory = () => {
   let color;
   React.useEffect(() => {
     axios
-      .get(`https://aridee.herokuapp.com/orders/user/${username}`, {
+      .get(`/orders/user/${username}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -87,7 +87,7 @@ const RideHistory = () => {
   const getOrders = (accountId, startDate, endDate) => {
     axios
       .post(
-        "https://aridee.herokuapp.com/orders/history",
+        "/orders/history",
         {
           accountId,
           // startDate: startDate.getDate()  + "." + (startDate.getMonth() + 1) + "." + startDate.getFullYear(),
@@ -112,7 +112,7 @@ const RideHistory = () => {
 
   const getAccounts = () => {
     axios
-      .get("https://aridee.herokuapp.com/accounts", {
+      .get("/accounts", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
