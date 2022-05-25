@@ -92,7 +92,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const getTariffs = (hasTariff = false) => {
     axios
       .get(
-        `http://aridee.cz:8000/tariffs/v2/account/${sessionStorage.getItem(
+        `https://aridee.herokuapp.com/tariffs/v2/account/${sessionStorage.getItem(
           "username"
         )}`,
         {
@@ -127,7 +127,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const getAllTariffs = (hasTariff = false) => {
     axios
       .get(
-        `http://aridee.cz:8000/tariffs/account/${sessionStorage.getItem(
+        `https://aridee.herokuapp.com/tariffs/account/${sessionStorage.getItem(
           "username"
         )}`,
         {
@@ -151,7 +151,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
     if (orderId) {
       getTariffs(true);
       axios
-        .get(`http://aridee.cz:8000/orders/${orderId}`, {
+        .get(`https://aridee.herokuapp.com/orders/${orderId}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -213,7 +213,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   React.useEffect(() => {
     axios
-      .get(`http://aridee.cz:8000/driver/listing`, {
+      .get(`https://aridee.herokuapp.com/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -241,7 +241,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   const getDriversList = () => {
     axios
-      .get(`http://aridee.cz:8000/driver/listing`, {
+      .get(`https://aridee.herokuapp.com/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -338,7 +338,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
     axios
     .post(
-      "http://aridee.cz:8000/orders/update",
+      "https://aridee.herokuapp.com/orders/update",
       {
         orderStatus: 'rejected',
         orderId,
@@ -389,7 +389,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   // const order = () => {
   //   axios
   //     .post(
-  //       "http://aridee.cz:8000/orders",
+  //       "https://aridee.herokuapp.com/orders",
   //       {
   //         orderStatus: 'accepted',
   //         orderId,
@@ -441,7 +441,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const order = () => {
     axios
       .post(
-        "http://aridee.cz:8000/orders/update",
+        "https://aridee.herokuapp.com/orders/update",
         {
           orderStatus: 'accepted',
           orderId,
