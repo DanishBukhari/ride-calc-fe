@@ -14,7 +14,7 @@ const Accounts = () => {
 
   const getAccounts = () => {
     axios
-      .get("https://aridee.herokuapp.com/accounts", {
+      .get("http://aridee.cz:8000/accounts", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -42,7 +42,7 @@ const Accounts = () => {
 
   const deleteAccount = (accountId) => {
     axios
-      .delete(`https://aridee.herokuapp.com/accounts/${accountId}`, {
+      .delete(`http://aridee.cz:8000/accounts/${accountId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,

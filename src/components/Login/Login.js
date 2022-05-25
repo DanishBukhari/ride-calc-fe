@@ -12,7 +12,7 @@ const Login = () => {
   const login = () => {
     if (username && password) {
       axios
-        .post("https://aridee.herokuapp.com/users/login", {
+        .post("http://aridee.cz:8000/users/login", {
           username,
           password,
         })
