@@ -1,7 +1,7 @@
 {
   "name": "ride-calc-fe",
   "version": "0.1.0",
-  "proxy": "http://aridee.cz:8000",
+  "proxy": "https://aridee.herokuapp.com",
   "private": true,
 
   "dependencies": {
