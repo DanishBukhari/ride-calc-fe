@@ -1,3 +1,3 @@
 module.exports = {
-    baseURL: "https://aridee.herokuapp.com"
+    baseURL: "http://aridee.cz:8000"
 };
