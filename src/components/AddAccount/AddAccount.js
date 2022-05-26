@@ -30,7 +30,7 @@ const AddAccount = () => {
   const createAccount = () => {
     axios
       .post(
-        "http://aridee.cz:8000/accounts",
+        "https://aridee.herokuapp.com/accounts",
         {
           account,
           accountAddress,

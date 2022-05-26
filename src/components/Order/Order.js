@@ -96,7 +96,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const getTariffs = (hasTariff = false) => {
     axios
       .get(
-        `http://aridee.cz:8000/tariffs/account/${sessionStorage.getItem(
+        `https://aridee.herokuapp.com/tariffs/account/${sessionStorage.getItem(
           "username"
         )}`,
         //`/tariffs/account/${username}`,
@@ -140,7 +140,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
     if (orderId) {
       getTariffs(true);
       axios
-        .get(`http://aridee.cz:8000/orders/${orderId}`, {
+        .get(`https://aridee.herokuapp.com/orders/${orderId}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -198,7 +198,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   React.useEffect(() => {
     axios
-      .get(`http://aridee.cz:8000/driver/listing`, {
+      .get(`https://aridee.herokuapp.com/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -231,7 +231,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
     { 
         
       axios
-      .get(`http://aridee.cz:8000/tariffs`, {
+      .get(`https://aridee.herokuapp.com/tariffs`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -290,7 +290,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
 
   const getDriversList = () => {
     axios
-      .get(`http://aridee.cz:8000/driver/listing`, {
+      .get(`https://aridee.herokuapp.com/driver/listing`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -408,7 +408,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   const order = () => {
     axios
       .post(
-        "http://aridee.cz:8000/orders",
+        "https://aridee.herokuapp.com/orders",
         {
           orderStatus: 'pending',
           orderId,

@@ -15,7 +15,7 @@ const RideHistory = () => {
   React.useEffect(() => {
     axios
     //   .get(`/orders/user/${username}`, {
-      .get(`http://aridee.cz:8000/tariffs/account/${username}`, {
+      .get(`https://aridee.herokuapp.com/tariffs/account/${username}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
@@ -40,7 +40,7 @@ const RideHistory = () => {
     //alert(driverName)
       axios
         .post(
-          `http://aridee.cz:8000/tariffs/remove`,
+          `https://aridee.herokuapp.com/tariffs/remove`,
           {
             tarrif_id: id,
           },
