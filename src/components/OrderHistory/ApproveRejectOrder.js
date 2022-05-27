@@ -115,10 +115,10 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
               }
             }
 
-          setTarrifs(temp);
+          //setTarrifs(temp);
           
           //setTarrifs(res.data);
-          setTariff(res.data[0]);
+          //setTariff(res.data[0]);
         }
       });
   };
@@ -139,8 +139,8 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
       )
       .then((res) => {
         if (res.status === 200) {
-          setTarrifs(res.data);
-          setTariff(res.data[0]);
+          //setTarrifs(res.data);
+          //setTariff(res.data[0]);
         }
       });
   };
@@ -310,7 +310,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   usePaymentTypeOutsideClick(paymentTypeRef);
 
   const clear = () => {
-    setTariff(tariffs[0]);
+    //setTariff(tariffs[0]);
     setSelectTariff(false);
     setClientFullName("");
     setClientPhoneNumber("");
@@ -913,8 +913,8 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                             className="option"
                             key={index}
                             onClick={() => {
-                              setSelectTariff(false);
-                              setTariff(tariff);
+                              //setSelectTariff(false);
+                              //setTariff(tariff);
                             }}
                           >
                             {`${tariff?.tariff_title} - ${
