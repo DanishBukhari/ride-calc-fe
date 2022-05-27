@@ -475,7 +475,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
               <div className="input-label">
                 {props.viewOnly ? "Tariff" : "Select tariff"}
               </div>
-              {props.viewOnly ? (
+              {/* {props.viewOnly ? (
                 <div className="input-select">{`${tariff?.tariff_title} - ${
                   tariff?.tariff_price
                 } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div>
@@ -517,7 +517,13 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                     </div>
                   )}
                 </>
-              )}
+              )} */}
+  
+                <div className="input-select">{`${tariff?.tariff_title} - ${
+                  tariff?.tariff_price
+                } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div>
+
+
             </div>
             <div className="pt-4">
               <div className="input-label">Client full name</div>
