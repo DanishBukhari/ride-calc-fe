@@ -23,13 +23,13 @@ const Order = (props) => {
 
   const [driverList, setDriverList] = React.useState(false);
 
-  const [tarrifList,setTarrifList] = React.useState([]);
+  const [tarrifList, setTarrifList] = React.useState([]);
 
 
   const [driverName, setDrivername] = React.useState("");
 
 
- 
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
@@ -39,7 +39,7 @@ const Order = (props) => {
     setIsSelected(!isSelected);
   }
 
-  const [tariff, setTariff] = React.useState(undefined);
+  const [tariff, setTariff] = React.useState("");
   const [selectTariff, setSelectTariff] = React.useState(false);
   const [clientFullName, setClientFullName] = React.useState("");
   const [clientPhoneNumber, setClientPhoneNumber] = React.useState("");
@@ -64,9 +64,9 @@ const Order = (props) => {
   const { orderId } = useParams();
   const [kilometers, setKilometers] = React.useState("");
 
-const [optionDrop, setOption] = React.useState([]);
+  const [optionDrop, setOption] = React.useState([]);
 
-const [acceptButton, setAcceptButton] = React.useState("Accept");
+  const [acceptButton, setAcceptButton] = React.useState("Accept");
 
 
 
@@ -110,25 +110,24 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
       .then((res) => {
         if (res.status === 200) {
 
-          let temp=[]
+          let temp = []
 
-            for(let i=0;i<res.data.length;i++)
-            {
-              if(res.data[i].isDeleted===0)
-              {
-                temp.push(res.data[i])
-              }
+          for (let i = 0; i < res.data.length; i++) {
+            if (res.data[i].isDeleted === 0) {
+              temp.push(res.data[i])
             }
+          }
 
           setTarrifs(temp);
 
 
           //setTarrifs(res.data);
+          console.log('Setting Data point 1=', res.data[0])
           setTariff(res.data[0]);
 
 
-          console.log('=== >>> tarriffs',tariffs)
-          console.log('=== >>> tariff',tariff)
+          console.log('=== >>> tarriffs', tariffs)
+          console.log('=== >>> tariff', tariff)
 
 
 
@@ -150,8 +149,14 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
           if (res.status === 200) {
             const orderData = res.data[0];
 
-            console.log('=== >> orderData == >>>',orderData)
-
+            console.log('=== >> orderData == >>>', orderData)
+            console.log('setting point 2', {
+              account_id: orderData.account_id,
+              tariff_id: orderData.tariff_id,
+              tariff_type: orderData.tariff_type,
+              tariff_title: orderData.tariff_title,
+              tariff_price: orderData.tariff_price,
+            })
             setTariff({
               account_id: orderData.account_id,
               tariff_id: orderData.tariff_id,
@@ -206,16 +211,15 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
       })
       .then((res) => {
         if (res.status === 200) {
-          let temp =[]
-          for(let i=0;i<res.data.length;i++)
-          {
+          let temp = []
+          for (let i = 0; i < res.data.length; i++) {
             temp.push({
-              label:res.data[i].name,
-              value:res.data[i].name
+              label: res.data[i].name,
+              value: res.data[i].name
             })
           }
           setOption(temp)
-          
+
           setDriverList(res.data)
 
         }
@@ -224,35 +228,34 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   }, []);
 
 
-  
-  React.useEffect(() => {
-        
-    if(sessionStorage.getItem('role')!=="User")
-    { 
-        
-      axios
-      .get(`https://aridee.herokuapp.com/tariffs`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
-        },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          let temp =[]
-          for(let i=0;i<res.data.length;i++)
-          {
-            temp.push({
-              label:res.data[i].tariff_title,
-              value:res.data[i].tariff_id
-            })
-          }
-          setTarrifs(res.data);
-          setTariff(res.data[0]);
-          setTarrifList(temp)
 
-        }
-      });
+  React.useEffect(() => {
+
+    if (sessionStorage.getItem('role') !== "User") {
+
+      axios
+        .get(`https://aridee.herokuapp.com/tariffs`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            let temp = []
+            for (let i = 0; i < res.data.length; i++) {
+              temp.push({
+                label: res.data[i].tariff_title,
+                value: res.data[i].tariff_id
+              })
+            }
+            setTarrifs(res.data);
+            console.log("setting point 3", res.data[0])
+            setTariff(res.data[0]);
+            setTarrifList(temp)
+
+          }
+        });
 
     }
 
@@ -299,7 +302,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
       .then((res) => {
         if (res.status === 200) {
           return res.data
-         
+
         }
       });
   }
@@ -381,7 +384,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
     setNote("");
   };
 
-  
+
 
   React.useEffect(() => {
     if (error) {
@@ -414,11 +417,10 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
           orderId,
           clientFullName,
           clientPhoneNumber,
-          pickUpDate: `${pickUpDate.getDate()}.${
-            pickUpDate.getMonth() + 1 < 10
-              ? `0${pickUpDate.getMonth() + 1}`
-              : pickUpDate.getMonth() + 1
-          }.${pickUpDate.getFullYear()}`,
+          pickUpDate: `${pickUpDate.getDate()}.${pickUpDate.getMonth() + 1 < 10
+            ? `0${pickUpDate.getMonth() + 1}`
+            : pickUpDate.getMonth() + 1
+            }.${pickUpDate.getFullYear()}`,
           pickUpTime,
           pickUpAddress: pickUpAddress.address,
           destinationAddress: destinationAddress.address,
@@ -429,9 +431,9 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
           totalPrice:
             tariff?.tariff_type === "Custom"
               ? tariff?.tariff_price *
-                (orderId && !calculateDistance()
-                  ? kilometers
-                  : calculateDistance())
+              (orderId && !calculateDistance()
+                ? kilometers
+                : calculateDistance())
               : tariff?.tariff_price,
           clientEmail,
           staffName,
@@ -466,20 +468,17 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                 {props.viewOnly ? "Tariff" : "Select tariff"}
               </div>
               {props.viewOnly ? (
-                <div className="input-select">{`${tariff?.tariff_title} - ${
-                  tariff?.tariff_price
-                } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div>
+                <div className="input-select">{`${tariff?.tariff_title} - ${tariff?.tariff_price
+                  } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div>
               ) : (
                 <>
                   <div
                     className="d-flex justify-content-between input-select pointer w-100"
                     onClick={() => setSelectTariff(true)}
                   >
-                    <div>{`${tariff?.tariff_title} - ${
-                      tariff?.tariff_price
-                    } CZK ${
-                      tariff?.tariff_type === "Custom" ? "/ km" : ""
-                    }`}</div>
+                    <div>{`${tariff?.tariff_title} - ${tariff?.tariff_price
+                      } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""
+                      }`}</div>
                     <div>
                       <AiOutlineDown />
                     </div>
@@ -487,7 +486,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                   {selectTariff && (
                     <div className={`${tariffs.length > 2 ? "dropdown" : ""}`}>
                       {tariffs.map((tariff, index) => {
-                        console.log('==== >>> tariff === ',tariff);
+                        console.log('==== >>> tariff === ', tariff);
                         return (
                           <div
                             className="option"
@@ -497,11 +496,9 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                               setTariff(tariff);
                             }}
                           >
-                            {`${tariff?.tariff_title} - ${
-                              tariff?.tariff_price
-                            } CZK ${
-                              tariff?.tariff_type === "Custom" ? "/ km" : ""
-                            }`}
+                            {`${tariff?.tariff_title} - ${tariff?.tariff_price
+                              } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""
+                              }`}
                           </div>
                         );
                       })}
@@ -628,11 +625,10 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                   <div className="input-label">Pickup date</div>
                   {props.viewOnly ? (
                     <div className="input">
-                      {`${new Date(pickUpDate).getDate()}.${
-                        new Date(pickUpDate).getMonth() + 1 < 10
-                          ? `0${new Date(pickUpDate).getMonth() + 1}`
-                          : new Date(pickUpDate).getMonth() + 1
-                      }.${new Date(pickUpDate).getFullYear()}`}
+                      {`${new Date(pickUpDate).getDate()}.${new Date(pickUpDate).getMonth() + 1 < 10
+                        ? `0${new Date(pickUpDate).getMonth() + 1}`
+                        : new Date(pickUpDate).getMonth() + 1
+                        }.${new Date(pickUpDate).getFullYear()}`}
                     </div>
                   ) : (
                     <DatePicker
@@ -758,93 +754,93 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
               <div>
                 {tariff?.tariff_type === "Custom"
                   ? tariff?.tariff_price *
-                    (orderId && !calculateDistance()
-                      ? kilometers
-                      : calculateDistance())
+                  (orderId && !calculateDistance()
+                    ? kilometers
+                    : calculateDistance())
                   : tariff?.tariff_price}{" "}
                 CZK
               </div>
             </div>
           </div>
 
-    {/* {isOpen && <Popup
+          {/* {isOpen && <Popup
       content={<>
         <button>Ok</button>
       </>}
       handleClose={togglePopup}
     />} */}
 
-{isOpen && <>
-  <div className="popup-box">
-      <div className="box">
-        <h1>Driver</h1>
+          {isOpen && <>
+            <div className="popup-box">
+              <div className="box">
+                <h1>Driver</h1>
 
 
-      
 
 
-      <Select
-      
-          options={optionDrop} 
-      // current
-            // onChange={(opt, meta) => {setDrivername(opt.value);isDriverSelected() } }
-            onChange={(opt, meta) => {setDrivername(opt.value) } }
-            
-      />
-      <button onClick={()=>{isDriverSelected();togglePopup();order(); setAcceptButton("Accepted") }}>Ok </button>
 
-        <span className="close-icon" onClick={props.handleClose}>x</span>
-        {/* <span className="close-icon" onClick={togglePopup()}>x</span> */}
+                <Select
 
-        {props.content}
-        
-      </div>
-    </div>
-</>
-}
+                  options={optionDrop}
+                  // current
+                  // onChange={(opt, meta) => {setDrivername(opt.value);isDriverSelected() } }
+                  onChange={(opt, meta) => { setDrivername(opt.value) }}
+
+                />
+                <button onClick={() => { isDriverSelected(); togglePopup(); order(); setAcceptButton("Accepted") }}>Ok </button>
+
+                <span className="close-icon" onClick={props.handleClose}>x</span>
+                {/* <span className="close-icon" onClick={togglePopup()}>x</span> */}
+
+                {props.content}
+
+              </div>
+            </div>
+          </>
+          }
 
 
           {!props.viewOnly && (
             <div className="col-lg-6 col-md-12 col-xs-12 d-flex align-items-end">
-              
+
               <div className="d-flex">
-           
+
                 {/* <button className="green-button" onClick={togglePopup}> */}
 
                 <button className="green-button"
 
-                onClick={() => {order()}}
-                > 
+                  onClick={() => { order() }}
+                >
 
                   {orderId ? "Save" : "Order Now"}
                   {/* {orderId ? "Accept1" : "Order Now"} */}
                   {/* {orderId ? acceptButton : "Order Now"} */}
 
-                  
+
 
                 </button>
 
                 {(!isSelected) && <>
                   <button className="blue-button ms-4" onClick={clear}>
-                  Clear
-                </button>
-</>
-}
+                    Clear
+                  </button>
+                </>
+                }
 
 
-{(isOpen || isSelected) && <>
+                {(isOpen || isSelected) && <>
                   <label>
-                  {driverName}
-                </label>
-</>
-}
+                    {driverName}
+                  </label>
+                </>
+                }
 
                 {/* <button className="blue-button ms-4" onClick={clear}>
                   Reject
                 </button> */}
-              
-              
-              
+
+
+
               </div>
             </div>
           )}
@@ -862,7 +858,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   };
 
 
-  const getDrivers = () =>{
+  const getDrivers = () => {
     return (
       <>
         <div className="row">
@@ -872,20 +868,17 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                 {props.viewOnly ? "Tariff" : "Select tariff"}
               </div>
               {props.viewOnly ? (
-                <div className="input-select">{`${tariff?.tariff_title} - ${
-                  tariff?.tariff_price
-                } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div>
+                <div className="input-select">{`${tariff?.tariff_title} - ${tariff?.tariff_price
+                  } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div>
               ) : (
                 <>
                   <div
                     className="d-flex justify-content-between input-select pointer w-100"
                     onClick={() => setSelectTariff(true)}
                   >
-                    <div>{`${tariff?.tariff_title} - ${
-                      tariff?.tariff_price
-                    } CZK ${
-                      tariff?.tariff_type === "Custom" ? "/ km" : ""
-                    }`}</div>
+                    <div>{`${tariff?.tariff_title} - ${tariff?.tariff_price
+                      } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""
+                      }`}</div>
                     <div>
                       <AiOutlineDown />
                     </div>
@@ -902,11 +895,9 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                               setTariff(tariff);
                             }}
                           >
-                            {`${tariff?.tariff_title} - ${
-                              tariff?.tariff_price
-                            } CZK ${
-                              tariff?.tariff_type === "Custom" ? "/ km" : ""
-                            }`}
+                            {`${tariff?.tariff_title} - ${tariff?.tariff_price
+                              } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""
+                              }`}
                           </div>
                         );
                       })}
@@ -1033,11 +1024,10 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                   <div className="input-label">Pickup date</div>
                   {props.viewOnly ? (
                     <div className="input">
-                      {`${new Date(pickUpDate).getDate()}.${
-                        new Date(pickUpDate).getMonth() + 1 < 10
-                          ? `0${new Date(pickUpDate).getMonth() + 1}`
-                          : new Date(pickUpDate).getMonth() + 1
-                      }.${new Date(pickUpDate).getFullYear()}`}
+                      {`${new Date(pickUpDate).getDate()}.${new Date(pickUpDate).getMonth() + 1 < 10
+                        ? `0${new Date(pickUpDate).getMonth() + 1}`
+                        : new Date(pickUpDate).getMonth() + 1
+                        }.${new Date(pickUpDate).getFullYear()}`}
                     </div>
                   ) : (
                     <DatePicker
@@ -1163,9 +1153,9 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
               <div>
                 {tariff?.tariff_type === "Custom"
                   ? tariff?.tariff_price *
-                    (orderId && !calculateDistance()
-                      ? kilometers
-                      : calculateDistance())
+                  (orderId && !calculateDistance()
+                    ? kilometers
+                    : calculateDistance())
                   : tariff?.tariff_price}{" "}
                 CZK
               </div>
@@ -1201,7 +1191,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
   // const isDriverSelected = () => {
 
 
-    
+
   // }
 
 
