@@ -38,7 +38,7 @@ const Order = (props) => {
     setIsSelected(!isSelected);
   }
 
-  const [tariff, setTariff] = React.useState(undefined);
+  const [tariff, setTariff] = React.useState("");
   const [selectTariff, setSelectTariff] = React.useState(false);
   const [clientFullName, setClientFullName] = React.useState("");
   const [clientPhoneNumber, setClientPhoneNumber] = React.useState("");
