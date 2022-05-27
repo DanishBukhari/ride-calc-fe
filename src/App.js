@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/order-history/:orderId" element={<Order viewOnly />} />
         <Route path="/drivers-listing" element={<DriverListing viewOnly />} />
         <Route path="/drivers-Add" element={<AddDriver/>} />
-        <Route path="/approve-order/:orderId" element={<ApproveOrder/>} />
+        <Route path="/approve-order/:orderId" element={<ApproveOrder viewOnly/>} />
         <Route path="/Tarrif-listing" element={<TarrifListing viewOnly />} />
         <Route path="/Tarrif-Add" element={<AddTarrif />} />
 
