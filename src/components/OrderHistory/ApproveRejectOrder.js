@@ -159,7 +159,7 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
         })
         .then((res) => {
           if (res.status === 200) {
-            const orderData = res.data.data[0];
+            const orderData = res.data[0];
             setTariff({
               account_id: orderData.account_id,
               tariff_id: orderData.tariff_id,
