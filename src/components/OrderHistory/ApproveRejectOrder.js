@@ -519,25 +519,10 @@ const [acceptButton, setAcceptButton] = React.useState("Accept");
                 </>
               )} */}
 
-              {tariff.tariff_type == "Custom" && (
-                <div className="input-select">{`${tariff?.tariff_title} - ${
+
+                 <div className="input-select">{`${tariff?.tariff_title} - ${
                   tariff?.tariff_price
-                } CZK / km }`}</div>
-              )}
-
-              {!tariff.tariff_type == "Custom" && (
-                <div className="input-select">{`${tariff?.tariff_title} - ${
-                  tariff?.tariff_price
-                } CZK / km }`}</div>
-              )}
-
-
-            
-
-
-                {/* <div className="input-select">{`${tariff?.tariff_title} - ${
-                  tariff?.tariff_price
-                } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div> */}
+                } CZK ${tariff?.tariff_type === "Custom" ? "/ km" : ""}`}</div> 
 
 
             </div>
